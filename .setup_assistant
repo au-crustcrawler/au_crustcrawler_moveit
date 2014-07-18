@@ -1,0 +1,8 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: au_crustcrawler_base
+    relative_path: conf/au_crustcrawler_ax12.urdf
+  SRDF:
+    relative_path: config/test_robot.srdf
+  CONFIG:
+    generated_timestamp: 1405672307
