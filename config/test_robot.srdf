@@ -30,28 +30,16 @@
     <!--VIRTUAL JOINT: Purpose: this element defines a virtual joint between a robot link and an external frame of reference (considered fixed with respect to the robot)-->
     <virtual_joint name="base_robot" type="fixed" parent_frame="base_footprint" child_link="base" />
     <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
-    <disable_collisions link1="base" link2="base_arm_1" reason="Adjacent" />
-    <disable_collisions link1="base" link2="base_arm_2" reason="Never" />
+    <disable_collisions link1="base" link2="base_arm" reason="Adjacent" />
+    <disable_collisions link1="base" link2="lower_arm" reason="Never" />
     <disable_collisions link1="base" link2="middle_arm" reason="Never" />
     <disable_collisions link1="base" link2="wrist_temp" reason="Never" />
-    <disable_collisions link1="base_arm_1" link2="base_arm_2" reason="Adjacent" />
-    <disable_collisions link1="base_arm_1" link2="gripper_camera_plate" reason="Never" />
-    <disable_collisions link1="base_arm_1" link2="gripper_end_effector" reason="Never" />
-    <disable_collisions link1="base_arm_1" link2="gripper_servo_base" reason="Never" />
-    <disable_collisions link1="base_arm_1" link2="lower_arm" reason="Never" />
-    <disable_collisions link1="base_arm_1" link2="middle_arm" reason="Never" />
-    <disable_collisions link1="base_arm_1" link2="wrist" reason="Never" />
-    <disable_collisions link1="base_arm_1" link2="wrist_temp" reason="Never" />
-    <disable_collisions link1="base_arm_2" link2="gripper_camera_plate" reason="Never" />
-    <disable_collisions link1="base_arm_2" link2="gripper_end_effector" reason="Never" />
-    <disable_collisions link1="base_arm_2" link2="gripper_servo_base" reason="Never" />
-    <disable_collisions link1="base_arm_2" link2="lower_arm" reason="Adjacent" />
-    <disable_collisions link1="base_arm_2" link2="middle_arm" reason="Never" />
-    <disable_collisions link1="base_arm_2" link2="wrist" reason="Never" />
-    <disable_collisions link1="base_arm_2" link2="wrist_temp" reason="Never" />
+    <disable_collisions link1="base_arm" link2="gripper_camera_plate" reason="Never" />
+    <disable_collisions link1="base_arm" link2="lower_arm" reason="Adjacent" />
+    <disable_collisions link1="base_arm" link2="middle_arm" reason="Never" />
+    <disable_collisions link1="base_arm" link2="wrist_temp" reason="Never" />
     <disable_collisions link1="gripper_camera_plate" link2="gripper_end_effector" reason="Never" />
     <disable_collisions link1="gripper_camera_plate" link2="gripper_servo_base" reason="Adjacent" />
-    <disable_collisions link1="gripper_camera_plate" link2="lower_arm" reason="Never" />
     <disable_collisions link1="gripper_camera_plate" link2="middle_arm" reason="Never" />
     <disable_collisions link1="gripper_camera_plate" link2="wrist" reason="Adjacent" />
     <disable_collisions link1="gripper_camera_plate" link2="wrist_temp" reason="Never" />
@@ -60,13 +48,10 @@
     <disable_collisions link1="gripper_end_effector" link2="middle_arm" reason="Never" />
     <disable_collisions link1="gripper_end_effector" link2="wrist" reason="Default" />
     <disable_collisions link1="gripper_end_effector" link2="wrist_temp" reason="Never" />
-    <disable_collisions link1="gripper_servo_base" link2="lower_arm" reason="Never" />
     <disable_collisions link1="gripper_servo_base" link2="middle_arm" reason="Never" />
     <disable_collisions link1="gripper_servo_base" link2="wrist" reason="Default" />
     <disable_collisions link1="gripper_servo_base" link2="wrist_temp" reason="Never" />
     <disable_collisions link1="lower_arm" link2="middle_arm" reason="Adjacent" />
-    <disable_collisions link1="lower_arm" link2="wrist" reason="Never" />
-    <disable_collisions link1="lower_arm" link2="wrist_temp" reason="Never" />
     <disable_collisions link1="middle_arm" link2="wrist" reason="Never" />
     <disable_collisions link1="middle_arm" link2="wrist_temp" reason="Adjacent" />
     <disable_collisions link1="wrist" link2="wrist_temp" reason="Adjacent" />

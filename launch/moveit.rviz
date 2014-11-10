@@ -5,6 +5,10 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /MotionPlanning1
+        - /MotionPlanning1/Scene Robot1
+        - /MotionPlanning1/Planning Request1
+        - /MotionPlanning1/Planning Metrics1
+        - /MotionPlanning1/Planned Path1
       Splitter Ratio: 0.74256
     Tree Height: 701
   - Class: rviz/Help
@@ -37,9 +41,9 @@ Visualization Manager:
       Value: true
     - Class: moveit_rviz_plugin/MotionPlanning
       Enabled: true
-      MoveIt_Goal_Tolerance: 0
+      MoveIt_Goal_Tolerance: 2
       MoveIt_Planning_Time: 5
-      MoveIt_Use_Constraint_Aware_IK: true
+      MoveIt_Use_Constraint_Aware_IK: false
       MoveIt_Warehouse_Host: 127.0.0.1
       MoveIt_Warehouse_Port: 33829
       Name: MotionPlanning
@@ -55,12 +59,7 @@ Visualization Manager:
             Show Axes: false
             Show Trail: false
             Value: true
-          base_arm_1:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          base_arm_2:
+          base_arm:
             Alpha: 1
             Show Axes: false
             Show Trail: false
@@ -100,7 +99,7 @@ Visualization Manager:
             Show Axes: false
             Show Trail: false
             Value: true
-        Loop Animation: true
+        Loop Animation: false
         Robot Alpha: 0.5
         Show Robot Collision: false
         Show Robot Visual: true
@@ -148,12 +147,7 @@ Visualization Manager:
             Show Axes: false
             Show Trail: false
             Value: true
-          base_arm_1:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          base_arm_2:
+          base_arm:
             Alpha: 1
             Show Axes: false
             Show Trail: false
@@ -224,10 +218,10 @@ Visualization Manager:
         Z: 2.23518e-07
       Name: Current View
       Near Clip Distance: 0.01
-      Pitch: 0.254797
+      Pitch: 0.299797
       Target Frame: base
       Value: XYOrbit (rviz)
-      Yaw: 0.421767
+      Yaw: 5.78358
     Saved: ~
 Window Geometry:
   Displays:
