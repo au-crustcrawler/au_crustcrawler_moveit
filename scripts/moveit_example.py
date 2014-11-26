@@ -49,12 +49,7 @@ import geometry_msgs.msg
 from std_msgs.msg import String
 
 def move_group_python_interface_tutorial():
-  ## BEGIN_TUTORIAL
-  ##
-  ## Setup
-  ## ^^^^^
-  ## CALL_SUB_TUTORIAL imports
-  ##
+
   ## First initialize moveit_commander and rospy.
   print "============ Starting tutorial setup"
   moveit_commander.roscpp_initialize(sys.argv)
@@ -75,91 +70,33 @@ def move_group_python_interface_tutorial():
   ## arm.
   group = moveit_commander.MoveGroupCommander("arm")
 
-
-  ## We create this DisplayTrajectory publisher which is used below to publish
-  ## trajectories for RVIZ to visualize.
-  display_trajectory_publisher = rospy.Publisher(
-                                      '/move_group/display_planned_path',
-                                      moveit_msgs.msg.DisplayTrajectory)
-
-  ## Wait for RVIZ to initialize. This sleep is ONLY to allow Rviz to come up.
-
-
-  ## Getting Basic Information
-  ## ^^^^^^^^^^^^^^^^^^^^^^^^^
-  ##
-  ## We can get the name of the reference frame for this robot
-  print "============ Reference frame: %s" % group.get_planning_frame()
-
-  ## We can also print the name of the end-effector link for this group
-  print "============ Reference frame: %s" % group.get_end_effector_link()
-
-  ## We can get a list of all the groups in the robot
-  print "============ Robot Groups:"
-  print robot.get_group_names()
-  ##   position: 
-# #     x: 0.32331592912
-#     y: -0.00831593156491
-#     z: 0.24273673722
-#   orientation: 
-#     x: 0.617838081346
-#     y: 0.586935985295
-#     z: 0.369941161349
-#     w: 0.370034851796
-
   ## Sometimes for debugging it is useful to print the entire state of the
   ## robot.
-  print "============ Printing robot state"
+  print "============ Printing robot joint state"
   print robot.get_current_state()
   print "============"
 
+  print "============ Printing robot end-effector pose"
+  print group.get_current_pose()
+  print "============"
   ps  = group.get_current_pose()
-  ## Planning to a Pose goal
-  ## ^^^^^^^^^^^^^^^^^^^^^^^
-  ## We can plan a motion for this group to a desired pose for the 
-  ## end-effector
+
+
   print "============ Generating plan 1"
   pose_target = ps.pose
-  pose_target.position.x = 0.25
-  #group.set_position_target([pose_target.position.x, pose_target.position.y, pose_target.position.z])
-  #group.set_pose_target(pose_target)
+
+  #
+  # move the end effector 0.05 m in the x direction (in the 'world' frame).
+  pose_target.position.x += 0.05
   group.set_joint_value_target(pose_target,None,True)
+
   ## Now, we call the planner to compute the plan
   ## and visualize it if successful
-  ## Note that we are just planning, not asking move_group 
+  ## Note that we are just planning, not asking move_group
   ## to actually move the robot
   plan1 = group.plan()
 
-  #print plan1
-
   group.go(wait=True)
-
-
-
-  ## Moving to a pose goal
-  ## ^^^^^^^^^^^^^^^^^^^^^
-  ##
-  ## Moving to a pose goal is similar to the step above
-  ## except we now use the go() function. Note that
-  ## the pose goal we had set earlier is still active 
-  ## and so the robot will try to move to that goal. We will
-  ## not use that function in this tutorial since it is 
-  ## a blocking function and requires a controller to be active
-  ## and report success on execution of a trajectory.
-
-  # Uncomment below line when working with a real robot
-  # group.go(wait=True)
-
-  ## Planning to a joint-space goal 
-  ## ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  ##
-  ## Let's set a joint space goal and move towards it. 
-  ## First, we will clear the pose target we had just set.
-
-  
- 
-  rospy.sleep(3)
-
 
   ## When finished shut down moveit_commander.
   moveit_commander.roscpp_shutdown()
@@ -174,4 +111,3 @@ if __name__=='__main__':
     move_group_python_interface_tutorial()
   except rospy.ROSInterruptException:
     pass
-
