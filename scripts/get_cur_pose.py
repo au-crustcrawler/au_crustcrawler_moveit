@@ -69,99 +69,15 @@ def move_group_python_interface_tutorial():
   ## arm.  This interface can be used to plan and execute motions on the left
   ## arm.
   group = moveit_commander.MoveGroupCommander("arm")
-  group.set_goal_tolerance(0.1);
-  group.set_planner_id("SBLkConfigDefault")
+
   ## Sometimes for debugging it is useful to print the entire state of the
-  ## robot.
-  print "============ Printing robot joint state"
-  print robot.get_current_state()
-  print "============"
 
   print "============ Printing robot end-effector pose"
-  print group.get_current_pose()
-  print "============"
-  ps  = group.get_current_pose()
-
-
-  print "============ Generating plan 1"
-  ps.pose.position.x= 0.104167691349
-  ps.pose.position.y= 0.374989376334
-  ps.pose.position.z= 0.066092524209
-
-  ps.pose.orientation.x= -0.531954657323
-  ps.pose.orientation.y= 0.684182690672
-  ps.pose.orientation.z= 0.297510390091
-  ps.pose.orientation.w= 0.400506998846
-
-
-
-  #
-  # move the end effector 0.05 m in the x direction (in the 'world' frame).
-
-  group.set_joint_value_target(ps,None,True)
-
-  ## Now, we call the planner to compute the plan
-  ## and visualize it if successful
-  ## Note that we are just planning, not asking move_group
-  ## to actually move the robot
-  plan1 = group.plan()
-
-  rospy.sleep(5)
-  group.go(wait=True)
-
-
-  ps.pose.position.x= -0.0250002736296
-  ps.pose.position.y= -1.27738778012e-05
-  ps.pose.position.z= 0.600999087285
-
-  ps.pose.orientation.x= 2.1157133798e-05
-  ps.pose.orientation.y= -4.69467052624e-05
-  ps.pose.orientation.z= 0.707069008992
-  ps.pose.orientation.w= 0.707144549488
-
-  group.set_joint_value_target(ps,None,True)
-
-  ## Now, we call the planner to compute the plan
-  ## and visualize it if successful
-  ## Note that we are just planning, not asking move_group
-  ## to actually move the robot
-  plan1 = group.plan()
-
-  rospy.sleep(5)
-  group.go(wait=True)
-
-
-  ps.pose.position.x=0.284533829625
-  ps.pose.position.y= 0.095949568364
-  ps.pose.position.z= 0.0320462807192
-
-  ps.pose.orientation.x= 0.115536326545
-  ps.pose.orientation.y= 0.963074963091
-  ps.pose.orientation.z= 0.104567923768
-  ps.pose.orientation.w= 0.219553005069
-
-
-
-
-  group.set_joint_value_target(ps,None,True)
-
-  ## Now, we call the planner to compute the plan
-  ## and visualize it if successful
-  ## Note that we are just planning, not asking move_group
-  ## to actually move the robot
-  plan1 = group.plan()
-
-  rospy.sleep(5)
-  group.go(wait=True)
-
-
+  #print group.get_current_pose()
+  print group.get_current_pose().pose.position.x, group.get_current_pose().pose.position.y, group.get_current_pose().pose.position.z
+  print group.get_current_rpy()
   ## When finished shut down moveit_commander.
   moveit_commander.roscpp_shutdown()
-
-  ## END_TUTORIAL
-
-  print "============ STOPPING"
-
 
 if __name__=='__main__':
   try:
